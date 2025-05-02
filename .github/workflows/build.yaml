@@ -30,5 +30,8 @@ jobs:
         distribution: 'temurin'
         cache: 'sbt'
     - uses: sbt/setup-sbt@v1
+    - name: Create application.conf
+      run: |
+        echo "${{ secrets.PRODUCTION_CONFIG }}" > src/main/resources/application.conf
     - name: Run tests
       run: sbt test
